@@ -29,8 +29,26 @@ class _TextBoxPageState extends State<LoginPage> {
                 Center(
                   child: Column(
                     children: [
-              
+                      
+                      const SizedBox(height: 10),
+                      Row(
+                        
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset("gambar/Logo.png", height: 80, width: 80),
+
+                          Text(
+                            "LKS ",
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.blueAccent.shade700), // Mengurangi ukuran font
+                          ),
+                          Text(
+                            "MART",
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.red.shade700), // Mengurangi ukuran font
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 48),
+                      // Judul Sign In
                       const Text(
                         "Sign In",
                         style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black87),
@@ -58,9 +76,19 @@ class _TextBoxPageState extends State<LoginPage> {
                     prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey),
                     errorStyle: const TextStyle(fontSize: 14), 
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Email tidak boleh kosong.';
+                    }
+                    if (!value.contains('@')) {
+                       return 'Format email tidak valid.';
+                    }
+                    return null;
+                  },
                 ),
 
                 const SizedBox(height: 24),
+
                 const Text(
                   "Password*", 
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color.fromARGB(221, 52, 2, 2)),
@@ -117,7 +145,7 @@ class _TextBoxPageState extends State<LoginPage> {
                     const SizedBox(width: 8),
                     const Text("Keep me logged in"),
                   ],
-                ),
+                ),       
 
                 const SizedBox(height: 24),
                 Row(
