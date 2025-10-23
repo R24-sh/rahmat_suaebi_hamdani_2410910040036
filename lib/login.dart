@@ -35,20 +35,18 @@ class _TextBoxPageState extends State<LoginPage> {
                         
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset("gambar/Logo.png", height: 80, width: 80),
-
+                          Image.asset("gambar/Logo.png", height: 80, width: 80),                       
                           Text(
                             "LKS ",
-                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.blueAccent.shade700), // Mengurangi ukuran font
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.blueAccent.shade700), 
                           ),
                           Text(
                             "MART",
-                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.red.shade700), // Mengurangi ukuran font
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.red.shade700), 
                           ),
                         ],
                       ),
                       const SizedBox(height: 48),
-                      // Judul Sign In
                       const Text(
                         "Sign In",
                         style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black87),
@@ -128,6 +126,7 @@ class _TextBoxPageState extends State<LoginPage> {
                     return null;
                   },
                 ),
+
                 
                 const SizedBox(height: 8),
                 Row(
@@ -145,8 +144,13 @@ class _TextBoxPageState extends State<LoginPage> {
                     const SizedBox(width: 8),
                     const Text("Keep me logged in"),
                   ],
-                ),       
+                ),
 
+                ElevatedButton(onPressed: () {
+                print(_emailController);
+                print(_passwordController);
+          }, 
+          child: Text("Login")),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -154,26 +158,7 @@ class _TextBoxPageState extends State<LoginPage> {
                     const Text(
                       "Belum punya akun? ",
                       style: TextStyle(color: Colors.black87),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Navigasi ke halaman Daftar Activity...'),
-                            backgroundColor: Colors.orange,
-                          ),
-                        );
-
-                      },
-                      child: Text(
-                        "Daftar di sini",
-                        style: TextStyle(
-                          color: Colors.blueAccent.shade700,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
+                    ),                  
                   ],
                 ),
               ],
