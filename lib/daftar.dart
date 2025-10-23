@@ -82,7 +82,7 @@ class _TextBoxPageState extends State<DaftarPage> {
                 TextFormField(
                   controller: _alamatController,
                   decoration: InputDecoration(
-                    hintText: "Nama Lengkap",
+                    hintText: "Alamat",
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                 ),
