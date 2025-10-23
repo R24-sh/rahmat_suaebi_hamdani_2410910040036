@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class DaftarPage extends StatefulWidget {
+  const DaftarPage({super.key});
 
   @override
-  State<LoginPage> createState() => _TextBoxPageState();
+  State<DaftarPage> createState() => _TextBoxPageState();
 }
 
-class _TextBoxPageState extends State<LoginPage> {
+class _TextBoxPageState extends State<DaftarPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _showPassword = true;
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _namaController =TextEditingController();
+  final TextEditingController _alamatController =TextEditingController();
+  final TextEditingController _userrnameController =TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +49,11 @@ class _TextBoxPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 48),
                       const Text(
-                        "Sign In",
+                        "Daftar",
                         style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black87),
                       ),
                       const Text(
-                        "Enter your ID and password to sign in!",
+                        "Silakan Isis Data Pribadi Anda",
                         style: TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                       const SizedBox(height: 40),
@@ -60,34 +62,91 @@ class _TextBoxPageState extends State<LoginPage> {
                 ),
 
                 const Text(
-                  "Email",
+                  "Nama Lengkap",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black87),
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
+                  controller: _namaController,
                   decoration: InputDecoration(
-                    hintText: "email",
+                    hintText: "Nama Lengkap",
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                    prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey),
-                    errorStyle: const TextStyle(fontSize: 14), 
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Email tidak boleh kosong.';
-                    }
-                    if (!value.contains('@')) {
-                       return 'Format email tidak valid.';
-                    }
-                    return null;
-                  },
                 ),
+
+                const Text(
+                  "Alamat",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black87),
+                ),
+                const SizedBox(height: 8),
+                TextFormField(
+                  controller: _alamatController,
+                  decoration: InputDecoration(
+                    hintText: "Nama Lengkap",
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  ),
+                ),
+
+                     const Text(
+                  "Userrname",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black87),
+                ),
+                const SizedBox(height: 8),
+                TextFormField(
+                  controller: _userrnameController,
+                  decoration: InputDecoration(
+                    hintText: "userrname",
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  ),
+                ),
+
 
                 const SizedBox(height: 24),
 
                 const Text(
                   "Password*", 
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color.fromARGB(221, 52, 2, 2)),
+                ),
+                const SizedBox(height: 8),
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: _showPassword,
+                  decoration: InputDecoration(
+
+                    hintText: "Min. 8 characters",
+
+                    suffixText: 'Min. 8 characters', 
+                    suffixStyle: const TextStyle(color: Colors.grey, fontSize: 14),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                    prefixIcon: const Icon(Icons.lock_outline, color: Colors.grey),
+                    suffixIcon: IconButton( 
+                      onPressed: () {
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
+                      icon: Icon(
+                        _showPassword ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    errorStyle: const TextStyle(fontSize: 14),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Kata sandi tidak boleh kosong.';
+                    }
+                    if (value.length < 8) {
+                      return 'Kata sandi minimal 8 karakter.';
+                    }
+                    return null;
+                  },
+                ),
+
+                                const SizedBox(height: 24),
+
+                const Text(
+                  "Konfigurasi Password*", 
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color.fromARGB(221, 52, 2, 2)),
                 ),
                 const SizedBox(height: 8),
@@ -146,7 +205,9 @@ class _TextBoxPageState extends State<LoginPage> {
                 ),
 
                 ElevatedButton(onPressed: () {
-                print(_emailController);
+                print(_namaController);
+                print(_alamatController);
+                print(_userrnameController);
                 print(_passwordController);
           }, 
           child: Text("Login")),
@@ -155,7 +216,7 @@ class _TextBoxPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Belum punya akun? ",
+                      "Sudah punya akun? ",
                       style: TextStyle(color: Colors.black87),
                     ),
 

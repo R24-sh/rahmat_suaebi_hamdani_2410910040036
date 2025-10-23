@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rahmat_suaebi_hamdani_2410910040036/login.dart';
+import 'package:rahmat_suaebi_hamdani_2410910040036/daftar.dart';
+
+
 
 
 
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage());
+      home: DaftarPage());
    
   }
 }
